@@ -25,7 +25,8 @@ function limited(ip) {
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 
 export default async function handler(req) {
-  const key = process.env.OPENROUTER_API_KEY;
+  // Accept the common spellings of the variable name. Only free models are ever requested (see okModel/FREE).
+  const key = (process.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API || process.env.OPENROUTER_KEY || '').trim();
   if (req.method === 'GET') return json({ configured: !!key, fallback: true, models: FREE });
   if (req.method !== 'POST') return json({ error: 'method' }, 405);
 
