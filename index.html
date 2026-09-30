@@ -980,11 +980,11 @@ select.sel { width: 100%; min-height: 42px; font: 400 15px/1.4 var(--sans); colo
 
   /* ================= composer ================= */
   function suggestions(q) { var out = []; if (!q) return out;
-    SYMS.forEach(function (s) { var sc = score(q, tl(s.t) + ' ' + tl(s.s), tl(s.t)); if (sc >= 0.5) out.push({ k: ui('guide'), t: tl(s.t), sc: sc + 0.2, fn: function () { if (s.g) openGuide(guideById(s.g), s); else show('schemes'); } }); });
-    kbForLang().forEach(function (e) { var sc = score(q, e.title + ' ' + e.body.slice(0, 500), e.title); if (sc >= 0.5) out.push({ k: ui('guide'), t: e.title, sc: sc, fn: function () { openGuide(e); } }); });
+    SYMS.forEach(function (s) { var sc = score(q, tl(s.t) + ' ' + tl(s.s), tl(s.t)); if (sc >= 0.5) out.push({ k: ui('guide'), t: tl(s.t), gid: s.g || ('sch'), sc: sc + 0.2, fn: function () { if (s.g) openGuide(guideById(s.g), s); else show('schemes'); } }); });
+    kbForLang().forEach(function (e) { var sc = score(q, e.title + ' ' + e.body.slice(0, 500), e.title); if (sc >= 0.5) out.push({ k: ui('guide'), t: e.title, gid: e.id, sc: sc, fn: function () { openGuide(e); } }); });
     matchedSchemes().forEach(function (s) { var sc = score(q, tl(s.t) + ' ' + tl(s.d) + ' ' + tl(s.fit), tl(s.t)); if (sc >= 0.5) out.push({ k: ui('scheme'), t: tl(s.t), sc: sc, fn: function () { show('schemes'); } }); });
     if (/rpm|speed|feed|finish|ra |tap|drill|fit|h7/i.test(q)) out.push({ k: ui('tool'), t: ui('toolsTitle'), sc: 0.4, fn: function () { show('tools'); } });
-    out.sort(function (a, b) { return b.sc - a.sc; }); var seen = {}; return out.filter(function (o) { if (seen[o.t]) return false; seen[o.t] = 1; return true; }).slice(0, 4); }
+    out.sort(function (a, b) { return b.sc - a.sc; }); var seen = {}; return out.filter(function (o) { var k = o.gid || o.t; if (seen[k]) return false; seen[k] = 1; return true; }).slice(0, 4); }
   function hideSugg() { var h = $('sugg'); if (h.hidden) return; h.classList.add('out'); setTimeout(function () { h.hidden = true; h.classList.remove('out'); }, 150); }
   function paintSugg() { var q = $('q').value.trim(), s = suggestions(q), host = $('sugg'); $('askBtn').dataset.empty = q ? 'false' : 'true'; host.textContent = ''; if (!q) { hideSugg(); return; }
     s.forEach(function (o, i) { var b = el('button', '', '<span class="k"></span><span class="t"></span>'); b.type = 'button'; b.style.setProperty('--i', String(i)); b.firstChild.textContent = o.k; b.lastChild.textContent = o.t; b.addEventListener('click', function () { $('sugg').hidden = true; o.fn(); }); host.appendChild(b); });
