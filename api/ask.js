@@ -26,9 +26,8 @@ const json = (o, status = 200) => new Response(JSON.stringify(o), { status, head
 
 export default async function handler(req) {
   const key = process.env.OPENROUTER_API_KEY;
-  if (req.method === 'GET') return json({ configured: !!key, models: FREE });
+  if (req.method === 'GET') return json({ configured: !!key, fallback: true, models: FREE });
   if (req.method !== 'POST') return json({ error: 'method' }, 405);
-  if (!key) return json({ error: 'not_configured' }, 503);
 
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'anon';
   if (limited(ip)) return json({ error: 'rate_limited' }, 429);
@@ -40,6 +39,9 @@ export default async function handler(req) {
   const size = messages.reduce((n, m) => n + String(m && m.content || '').length, 0);
   if (size > 16000) return json({ error: 'too_long' }, 413);
   const clean = messages.map((m) => ({ role: m.role === 'system' ? 'system' : m.role === 'assistant' ? 'assistant' : 'user', content: String(m.content || '').slice(0, 16000) }));
+
+  // No OpenRouter key on the server: fall back to a keyless free model (weaker; the key is strongly recommended).
+  if (!key) return keyless(clean);
 
   const chain = [okModel(body.model) ? body.model : null, ...FREE].filter((m, i, a) => m && a.indexOf(m) === i);
   let last = 0;
@@ -59,5 +61,22 @@ export default async function handler(req) {
     if (r.status === 401 || r.status === 403) return json({ error: 'not_configured' }, 503);
     if (!RETRY.has(r.status)) { const t = await r.text().catch(() => ''); return json({ error: 'upstream', status: r.status, detail: t.slice(0, 300) }, 502); }
   }
+  // Every free OpenRouter model refused: try the keyless model before giving up.
+  const fb = await keyless(clean, true);
+  if (fb) return fb;
   return json({ error: last === 429 || last === 402 ? 'rate_limited' : 'upstream', status: last }, last === 429 || last === 402 ? 429 : 502);
+}
+
+async function keyless(messages, soft) {
+  let r;
+  try {
+    r = await fetch('https://text.pollinations.ai/openai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Referer: 'https://karkhana.vercel.app' },
+      body: JSON.stringify({ model: 'openai-fast', messages, stream: true, max_tokens: 700, temperature: 0.4 })
+    });
+  } catch { return soft ? null : json({ error: 'upstream', status: 502 }, 502); }
+  if (r.ok && r.body) return new Response(r.body, { status: 200, headers: { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no', 'X-Model': 'keyless/openai-fast' } });
+  if (soft) return null;
+  return json({ error: r.status === 429 ? 'rate_limited' : 'upstream', status: r.status }, r.status === 429 ? 429 : 502);
 }
