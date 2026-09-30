@@ -6,7 +6,8 @@
 <meta name="description" content="Karkhana: shop-floor know-how, calculators and government schemes for small Indian factories, in Hindi and English. Free.">
 <meta property="og:title" content="Karkhana — shop-floor know-how for small Indian factories">
 <meta property="og:description" content="55 guides in Hindi and English: finish, chatter, alarms, tooling, quality, pricing, payments. Calculators, schemes, machine logbook. Free.">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://karkhana.vercel.app/">
+<meta name="twitter:card" content="summary">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -956,11 +957,11 @@ tbody tr:hover td, tr:hover td { background: var(--card-2); }
     if (e) { list = kbForLang().filter(function (x) { return x.id !== e.id && x.topic === e.topic; }).slice(0, 3); if (list.length < 3) { var more = kbForLang().filter(function (x) { return x.id !== e.id && list.indexOf(x) < 0; }).map(function (x) { return [score(e.title, x.title + ' ' + x.body.slice(0, 400), x.title), x]; }).filter(function (p) { return p[0] > 0.4; }).sort(function (a, b) { return b[0] - a[0]; }).slice(0, 3 - list.length).map(function (p) { return p[1]; }); list = list.concat(more); } $('gRelEye').textContent = ui('related'); }
     else if (freeQ) { list = kbForLang().map(function (x) { return [score(freeQ, x.title + ' ' + x.body, x.title), x]; }).filter(function (p) { return p[0] >= 0.3; }).sort(function (a, b) { return b[0] - a[0]; }).slice(0, 3).map(function (p) { return p[1]; }); $('gRelEye').textContent = ui('fromKb'); }
     wrap.hidden = !list.length; list.forEach(function (x) { host.appendChild(guideRow(x)); }); }
-  function guideText(e) { var p = steps(e.body); return e.title + '\n\n' + p.items.map(function (it, i) { return (i + 1) + '. ' + it.replace(/\*\*/g, ''); }).join('\n') + (p.notes.length ? '\n\n' + p.notes.join('\n') : '') + '\n\n— Karkhana'; }
+  function guideText(e) { var p = steps(e.body); return e.title + '\n\n' + p.items.map(function (it, i) { return (i + 1) + '. ' + it.replace(/\*\*/g, ''); }).join('\n') + (p.notes.length ? '\n\n' + p.notes.join('\n') : '') + '\n\n— Karkhana · karkhana.vercel.app'; }
   function shareText(title, text) { if (navigator.share) { navigator.share({ title: title, text: text }).catch(function () {}); return; } try { if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { toast(ui('copied')); }); } catch (x) {} window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
   $('gPin').addEventListener('click', function () { if (cur && cur.e) togglePin(cur.e); });
   $('gShare').addEventListener('click', function () { if (cur && cur.e) shareText(cur.e.title, guideText(cur.e)); });
-  $('gShareA').addEventListener('click', function () { if (!cur || !cur.text) return; var p = parseAdvice(cur.text); shareText(cur.q, cur.q + '\n\n' + p.causes.map(function (c, i) { return (i + 1) + '. ' + c.replace(/\*\*/g, ''); }).join('\n') + (p.check ? '\n\n' + ui('check') + ': ' + p.check : '') + '\n\n— Karkhana'); });
+  $('gShareA').addEventListener('click', function () { if (!cur || !cur.text) return; var p = parseAdvice(cur.text); shareText(cur.q, cur.q + '\n\n' + p.causes.map(function (c, i) { return (i + 1) + '. ' + c.replace(/\*\*/g, ''); }).join('\n') + (p.check ? '\n\n' + ui('check') + ': ' + p.check : '') + '\n\n— Karkhana · karkhana.vercel.app'); });
   $('gBack').addEventListener('click', function () { show('home'); if (abortAsk) abortAsk.abort(); });
   function parseAdvice(text) { var o = { causes: [], check: '', safety: '', askback: '', note: '', other: [] }, mode = 'other';
     text.split('\n').forEach(function (raw) { var l = raw.trim(); if (!l) return; var u = l.toUpperCase();
@@ -1075,7 +1076,7 @@ tbody tr:hover td, tr:hover td { background: var(--card-2); }
       var lg = d.querySelector('.log'); if (!n) lg.innerHTML = '<p class="small muted">' + ui('noLog') + '</p>';
       (m.log || []).forEach(function (l) { var r = el('div', '', '<span class="dt"></span><span><b></b><br><span></span></span>'); r.querySelector('.dt').textContent = l.d; r.querySelector('b').textContent = l.p; r.querySelector('span span').textContent = l.f; lg.appendChild(r); });
       d.querySelector('.logbtn span').textContent = ui('logFix'); d.querySelector('.logbtn').addEventListener('click', function () { openLogSheet(m.id, ''); });
-      d.querySelector('.sharebtn span').textContent = ui('shareLog'); d.querySelector('.sharebtn').hidden = !n; d.querySelector('.sharebtn').addEventListener('click', function () { shareText(m.name, m.name + ' (' + typ + ')\n' + (m.log || []).map(function (l) { return l.d + ' · ' + l.p + ' → ' + l.f; }).join('\n') + '\n\n— Karkhana'); });
+      d.querySelector('.sharebtn span').textContent = ui('shareLog'); d.querySelector('.sharebtn').hidden = !n; d.querySelector('.sharebtn').addEventListener('click', function () { shareText(m.name, m.name + ' (' + typ + ')\n' + (m.log || []).map(function (l) { return l.d + ' · ' + l.p + ' → ' + l.f; }).join('\n') + '\n\n— Karkhana · karkhana.vercel.app'); });
       d.querySelector('.del').textContent = ui('delM'); d.querySelector('.del').addEventListener('click', function () { var removed = m, idx = machines.indexOf(m); machines = machines.filter(function (x) { return x.id !== m.id; }); save('karkhana.machines', machines); paintUI(); toastUndo(ui('removed'), function () { machines.splice(Math.min(idx, machines.length), 0, removed); save('karkhana.machines', machines); paintUI(); }); });
       d.querySelector('.acc-h').addEventListener('click', function () { var open = d.classList.toggle('open'); openM[m.id] = open; this.setAttribute('aria-expanded', String(open)); }); host.appendChild(d); }); }
   $('addMachToggle').addEventListener('click', function () { var acc = $('addMachAcc'); var open = acc.classList.toggle('open'); this.setAttribute('aria-expanded', String(open)); if (open) setTimeout(function () { $('mName').focus(); }, 200); });
