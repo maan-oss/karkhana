@@ -15,19 +15,16 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Karkhana">
 <title>Karkhana</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Sans+Bengali:wght@400;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap">
-<meta name="theme-color" content="#FAF9F5">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Sans+Bengali:wght@400;600&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#212121" media="(prefers-color-scheme: dark)">
 <style>
 /* Karkhana v3. Claude-app calm: warm ivory ground, sidebar, one accent, serif headlines, composer input, hairline lists. */
 :root {
-  --bg: #FAF9F5; --side: #F0EEE6; --card: #FFFFFF; --card-2: #F4F2EC; --hair: #E8E6DC; --hair-2: #DCD9CD;
-  --ink: #2F2C24; --ink-2: #6B675C; --ink-3: #9C978A;
-  --accent: #D97757; --accent-hover: #C6613F; --accent-soft: #F6E7DF; --accent-ink: #FFFFFF;
-  --ok: #4E8A63; --ok-soft: #E6F0E8; --warn: #B8862D; --warn-soft: #F6EAD0; --danger: #B5493A; --danger-soft: #F7E4E0;
-  --sh-hue: 40;
-  --shadow-xs: 0 1px 1px hsl(var(--sh-hue) 20% 20%/.04), 0 2px 2px hsl(var(--sh-hue) 20% 20%/.03);
-  --shadow: 0 1px 1px hsl(var(--sh-hue) 20% 20%/.03), 0 2px 2px hsl(var(--sh-hue) 20% 20%/.03), 0 4px 4px hsl(var(--sh-hue) 20% 20%/.03), 0 8px 8px hsl(var(--sh-hue) 20% 20%/.03);
-  --shadow-lg: 0 2px 2px hsl(var(--sh-hue) 20% 20%/.03), 0 4px 4px hsl(var(--sh-hue) 20% 20%/.03), 0 8px 8px hsl(var(--sh-hue) 20% 20%/.03), 0 24px 40px -12px hsl(var(--sh-hue) 20% 20%/.12);
+  --bg: #FFFFFF; --side: #F9F9F9; --card: #FFFFFF; --card-2: #F4F4F4; --hair: #E8E8E8; --hair-2: #D4D4D4;
+  --ink: #0D0D0D; --ink-2: #5D5D5D; --ink-3: #8E8E8E;
+  --accent: #0D0D0D; --accent-hover: #2B2B2B; --accent-soft: #F4F4F4; --accent-ink: #FFFFFF;
+  --ok: #2F7D4F; --ok-soft: #EAF4EE; --warn: #9A6A12; --warn-soft: #F8F0DC; --danger: #B3372B; --danger-soft: #FBE9E6;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.05); --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.05); --shadow-lg: 0 2px 4px rgba(0,0,0,.04), 0 12px 32px -8px rgba(0,0,0,.14);
   --focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
   --serif: "Source Serif 4", Georgia, serif; --serif-hi: "Tiro Devanagari Hindi", "Noto Sans Devanagari", serif;
   --sans: "DM Sans", "Noto Sans Devanagari", "Noto Sans Gujarati", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", system-ui, sans-serif;
@@ -36,12 +33,12 @@
   --t-press: 140ms; --t-fast: 200ms; --t-base: 300ms; --t-slow: 500ms;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #1F1E1B; --side: #191816; --card: #262522; --card-2: #2D2B27; --hair: #3A3833; --hair-2: #4A4741; --ink: #F2F0E9; --ink-2: #B5B1A5; --ink-3: #7F7B71;
-  --accent: #D97757; --accent-hover: #E68A6C; --accent-soft: #3B2A22; --accent-ink: #FFFFFF; --ok: #7FB894; --ok-soft: #22322A; --warn: #D9A84E; --warn-soft: #3A3019; --danger: #F08C7C; --danger-soft: #3D2622;
+  --bg: #212121; --side: #171717; --card: #2A2A2A; --card-2: #2F2F2F; --hair: #3A3A3A; --hair-2: #4D4D4D; --ink: #ECECEC; --ink-2: #B4B4B4; --ink-3: #8A8A8A;
+  --accent: #ECECEC; --accent-hover: #FFFFFF; --accent-soft: #2F2F2F; --accent-ink: #0D0D0D; --ok: #6FC08C; --ok-soft: #1F3328; --warn: #E0B25A; --warn-soft: #3A3119; --danger: #F2877A; --danger-soft: #3D2420;
   --shadow-xs: none; --shadow: none; --shadow-lg: 0 24px 40px -12px rgba(0,0,0,.5); color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --bg: #1F1E1B; --side: #191816; --card: #262522; --card-2: #2D2B27; --hair: #3A3833; --hair-2: #4A4741; --ink: #F2F0E9; --ink-2: #B5B1A5; --ink-3: #7F7B71;
-  --accent: #D97757; --accent-hover: #E68A6C; --accent-soft: #3B2A22; --accent-ink: #FFFFFF; --ok: #7FB894; --ok-soft: #22322A; --warn: #D9A84E; --warn-soft: #3A3019; --danger: #F08C7C; --danger-soft: #3D2622;
+  --bg: #212121; --side: #171717; --card: #2A2A2A; --card-2: #2F2F2F; --hair: #3A3A3A; --hair-2: #4D4D4D; --ink: #ECECEC; --ink-2: #B4B4B4; --ink-3: #8A8A8A;
+  --accent: #ECECEC; --accent-hover: #FFFFFF; --accent-soft: #2F2F2F; --accent-ink: #0D0D0D; --ok: #6FC08C; --ok-soft: #1F3328; --warn: #E0B25A; --warn-soft: #3A3119; --danger: #F2877A; --danger-soft: #3D2420;
   --shadow-xs: none; --shadow: none; --shadow-lg: 0 24px 40px -12px rgba(0,0,0,.5); color-scheme: dark; }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -665,7 +662,7 @@ select.sel { width: 100%; min-height: 42px; font: 400 15px/1.4 var(--sans); colo
 .onb.out { animation: fadeOut .34s var(--ease-out) forwards; pointer-events: none; }
 .onb-stage { position: relative; height: clamp(214px, 33dvh, 320px); overflow: hidden; isolation: isolate; color: var(--stage-ink); }
 .os-brand { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); left: 22px; display: flex; align-items: center; gap: 9px; color: var(--stage-ink); }
-.os-brand .mark { width: 24px; height: 24px; color: #E8896A; } .os-brand b { font: 500 21px/1 var(--serif); letter-spacing: -.01em; } .os-brand i { font: italic 400 15px/1 var(--serif); color: rgba(244,239,230,.55); }
+.os-brand .mark { width: 24px; height: 24px; color: currentColor; } .os-brand b { font: 500 21px/1 var(--serif); letter-spacing: -.01em; } .os-brand i { font: italic 400 15px/1 var(--serif); color: rgba(244,239,230,.55); }
 .os-quote { position: absolute; left: 22px; top: calc(62px + env(safe-area-inset-top, 0px)); max-width: 15ch; font: 400 clamp(24px, 6.4vw, 32px)/1.16 var(--serif); letter-spacing: -.012em; color: var(--stage-ink); text-wrap: balance; }
 .os-quote.sw { animation: quoteIn .7s var(--ease-out) both; } @keyframes quoteIn { from { opacity: 0; transform: translateY(10px); filter: blur(4px); } }
 [lang="hi"] .os-quote { font-family: var(--serif-hi); letter-spacing: 0; line-height: 1.28; }
@@ -749,56 +746,78 @@ select.sel { width: 100%; min-height: 42px; font: 400 15px/1.4 var(--sans); colo
 
 
 
-/* v15 line-art: ivory ground, one ink stroke, one terracotta accent. No photo, no glow. */
-.art svg { display: block; width: 100%; height: auto; color: var(--ink); overflow: visible; }
-.ln { fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-.ln.ac, .ac { stroke: var(--accent); }
-.d { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lineDraw 1.1s var(--ease-out) forwards; animation-delay: calc(var(--d, 0) * 1s); }
-@keyframes lineDraw { to { stroke-dashoffset: 0; } }
-.pm path, .pm circle { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lineDraw 1.1s var(--ease-out) forwards; animation-delay: calc(var(--d, 0) * 1s); }
+/* v17 monochrome (ChatGPT-style): neutral greys, one ink, no accent colour, no glow, no gradients. */
+:root { --serif: var(--sans); --serif-hi: var(--sans); --stage: var(--side); --stage-ink: var(--ink); }
+.t-hero, .t-h1, .t-h2, .gtitle { font-weight: 600; letter-spacing: -.022em; }
+[lang="hi"] .t-hero, [lang="mr"] .t-hero, [lang="hi"] .t-h2, [lang="mr"] .t-h2, [lang="hi"] .gtitle, [lang="mr"] .gtitle, [lang="hi"] .t-h1, [lang="mr"] .t-h1 { font-weight: 600; letter-spacing: 0; }
+.t-hero em { color: var(--ink-3); }
+.spark { color: var(--ink); }
+
+/* the scene */
+.art svg { display: block; width: 100%; height: auto; overflow: visible; color: var(--ink); }
+.lathe .sh { fill: var(--bg); stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.lathe .ol { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.lathe .nf { fill: var(--bg); stroke: none; }
+.lathe .tl { fill: currentColor; }
+.lathe .chip { fill: none; stroke: var(--ink-2); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.lathe .track { fill: none; stroke: var(--hair-2); stroke-width: 2.2; }
+.lathe .spin { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.lathe .tagbox { fill: var(--bg); stroke: var(--hair-2); stroke-width: 1.6; }
+.lathe text { font: 500 12.5px var(--sans); fill: var(--ink-2); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from { opacity: 0; transform: translateY(10px); } }
+
+/* page-header icons: a small tile, not a floating drawing */
+.pm path, .pm circle { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lineDraw 1s var(--ease-out) forwards; animation-delay: calc(var(--d, 0) * 1s); }
 .pm circle[fill="currentColor"] { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
-.fl { fill: var(--accent-soft); opacity: 0; animation: fadeIn .9s ease .1s forwards; } .fl2 { fill: var(--card-2); opacity: 0; animation: fadeIn .8s ease 1.1s forwards; } @keyframes fadeIn { to { opacity: 1; } }
-.lathe .ins { fill: var(--accent-soft); }
-.axis { stroke-dasharray: 14 5 3 5; opacity: .3; stroke-width: 1.4; }
-.dim { font: 500 13px/1 var(--sans); fill: var(--ink-2); opacity: 0; animation: fadeIn .6s ease 1.5s forwards; letter-spacing: .03em; }
-.lathe .chip { stroke-dasharray: 1; stroke-dashoffset: 1; animation: chipCurl 3.4s var(--ease-out) 2s infinite; }
-@keyframes chipCurl { 0% { stroke-dashoffset: 1; } 42%, 78% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1; } }
-.lathe .sp { opacity: 0; animation: sparkFlash 3.4s ease-out 2s infinite; } .lathe .sp path { stroke-width: 2.2; }
-@keyframes sparkFlash { 0%, 100% { opacity: 0; } 12%, 60% { opacity: 1; } 80% { opacity: 0; } }
-.lathe .rot { stroke-dasharray: 5 9; opacity: .8; animation: rotFlow 1.3s linear infinite; } @keyframes rotFlow { to { stroke-dashoffset: -28; } }
-.lathe .tool { animation: toolIn 1s var(--ease-out) .2s both; } @keyframes toolIn { from { transform: translate(26px, -16px); opacity: 0; } }
+@keyframes lineDraw { to { stroke-dashoffset: 0; } }
+.hero.pstage { position: relative; padding-right: 0; }
+.hero.pstage .pm { position: static; display: block; align-self: flex-start; box-sizing: border-box; width: 46px; height: 46px; padding: 11px; margin: 0 0 4px; border-radius: 13px; background: var(--card-2); border: 1px solid var(--hair); color: var(--ink); }
+.pm g { stroke-width: 6.5; }
+@media (min-width: 900px) { .hero.pstage .pm { width: 52px; height: 52px; padding: 12px; } }
 
 /* onboarding */
-.onb { background: var(--bg); } .onb-stage { background: var(--side); color: var(--ink); border-bottom: 1px solid var(--hair); }
-.os-art { position: absolute; left: 4%; right: 4%; bottom: 8px; top: auto; }
-.os-art svg { transition: transform 1.3s var(--ease-out); transform-origin: 50% 70%; }
-.onb[data-step="1"] .os-art svg { transform: scale(1.28); transform-origin: 64% 40%; } .onb[data-step="2"] .os-art svg { transform: scale(1.22); transform-origin: 92% 62%; }
-.os-brand { color: var(--ink); } .os-brand .mark { color: var(--accent); } .os-brand i { color: var(--ink-3); }
-.os-quote { color: var(--ink); text-shadow: none; }
-.onb-panel { margin-top: 0; background: var(--bg); background-image: none; border-radius: 0; box-shadow: none; }
-@media (min-width: 900px) { .onb-panel { margin-left: 0; border-radius: 0; box-shadow: none; } .onb-stage { border-bottom: 0; border-right: 1px solid var(--hair); } .os-art { left: 6%; right: 6%; bottom: auto; top: 46%; margin-top: -90px; } }
-.onb-foot .cta { box-shadow: none; }
+.onb { background: var(--bg); }
+.onb-stage { position: relative; display: flex; flex-direction: column; gap: 10px; height: clamp(272px, 41dvh, 352px); padding: calc(16px + env(safe-area-inset-top, 0px)) 20px 16px; background: var(--side); color: var(--ink); border-bottom: 1px solid var(--hair); overflow: hidden; }
+.os-brand, .os-quote, .os-art { position: static; top: auto; left: auto; right: auto; bottom: auto; margin: 0; }
+.os-brand { display: flex; align-items: center; gap: 9px; flex: none; color: var(--ink); }
+.os-brand .mark { width: 22px; height: 22px; color: var(--ink); }
+.os-brand b { font: 600 18px/1 var(--sans); letter-spacing: -.01em; } .os-brand i { font: 400 14px/1 var(--sans); font-style: normal; color: var(--ink-3); }
+.os-art { position: relative; flex: 1; min-height: 0; }
+.os-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.os-quote { flex: none; max-width: none; min-height: 2.6em; font: 500 clamp(17px, 4.6vw, 21px)/1.3 var(--sans); letter-spacing: -.01em; color: var(--ink); text-shadow: none; }
+[lang="hi"] .os-quote { letter-spacing: 0; line-height: 1.4; }
+.onb-panel { margin: 0; background: var(--bg); background-image: none; border-radius: 0; box-shadow: none; }
+.onb-foot .cta { box-shadow: none; border-radius: 14px; }
+@media (min-width: 900px) {
+  .onb-stage { height: auto; padding: 36px 48px 48px; gap: 20px; border-bottom: 0; border-right: 1px solid var(--hair); }
+  .os-quote { font-size: clamp(28px, 2.8vw, 40px); font-weight: 600; letter-spacing: -.02em; max-width: 16ch; text-wrap: balance; }
+  .onb-panel { margin: 0; border-radius: 0; box-shadow: none; }
+}
 
-/* home hero: plain ivory, line lathe on top */
-.hstage { background: none; color: inherit; border-radius: 0; padding: 0; margin: 6px 0 0; }
-.hstage .hart { height: auto; margin: 0 0 8px; max-width: 520px; }
-.hstage .eyebrow { color: var(--ink-3); } .hstage .t-hero { color: var(--ink); } .hstage .t-hero em { color: var(--accent); }
-.hstage .hcopy { padding: 0; } .hstage .comp { border-color: var(--hair); box-shadow: var(--shadow); }
-@media (min-width: 900px) { .hstage { margin-top: 18px; padding: 0; } .hstage .hart { max-width: 560px; } .hstage .hcopy { padding: 0; } }
+/* home hero */
+.hstage { background: none; color: inherit; border-radius: 0; padding: 0; margin: 6px 0 0; display: block; }
+.hstage .hart { margin: 0 0 18px; padding: 16px 12px 12px; background: var(--card-2); border: 1px solid var(--hair); border-radius: 22px; }
+.hstage .hcopy { padding: 0; }
+.hstage .eyebrow { color: var(--ink-3); } .hstage .t-hero { color: var(--ink); }
+.hstage .comp { border-color: var(--hair-2); box-shadow: var(--shadow); }
+@media (min-width: 900px) {
+  .hstage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: 44px; align-items: center; margin-top: 18px; }
+  .hstage .hart { order: 2; margin: 0; padding: 26px 22px 18px; } .hstage .hcopy { order: 1; padding: 0; }
+}
 
-/* tiles: soft tinted, flat */
-.itile.dark { background: var(--card-2); color: var(--ink); border-color: var(--hair); }
-.itile.acc { background: var(--accent-soft); color: var(--ink); border-color: transparent; }
-.itile.acc .it-n { color: var(--accent); } .itile.acc .deco path { stroke: var(--accent); stroke-opacity: .8; }
-.itile .deco { opacity: 1; }
+/* instrument tiles: flat, neutral */
+.itile, .itile.dark, .itile.acc { background: var(--card); color: var(--ink); border: 1px solid var(--hair); box-shadow: none; border-radius: 18px; }
+.itile:hover { box-shadow: none; border-color: var(--hair-2); transform: translateY(-2px); }
+.itile .deco { opacity: .4; color: var(--ink); }
+.deco .ring { animation: none; } .itile:hover .deco .ring { animation: spin 6s linear infinite; }
+.inst .viz { background: var(--card-2); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 
-/* page headers */
-.hero.pstage { position: relative; padding-right: 96px; }
-.hero.pstage .pm { position: absolute; right: 0; top: 18px; width: 74px; height: auto; color: var(--accent); }
-.hero.pstage + * { margin-top: 0; }
-@media (min-width: 900px) { .hero.pstage .pm { top: 52px; width: 96px; } }
-@media (prefers-reduced-motion: reduce) { .d, .pm path, .pm circle, .lathe .chip, .lathe .sp, .lathe .rot, .lathe .tool, .fl, .fl2, .dim { animation: none !important; stroke-dashoffset: 0 !important; opacity: 1 !important; } .lathe .sp { opacity: 0 !important; } }
-.inst .viz { background: var(--card-2); }
+@media (prefers-reduced-motion: reduce) { svg.lathe, .pm path, .pm circle { animation: none !important; stroke-dashoffset: 0 !important; opacity: 1 !important; } .deco .ring { animation: none !important; } }
+
+.hstage .t-hero em, .hero .t-hero em { color: var(--ink-3); }
+.itile .deco { display: none; }
+.os-brand { order: 0; } .os-art { order: 1; } .os-quote { order: 2; }
+@media (min-width: 900px) { .hstage { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
 </style>
 
 <script>window.va=window.va||function(){(window.va.q=window.va.q||[]).push(arguments)}</script><script defer src="/_vercel/insights/script.js"></script>
@@ -847,10 +866,10 @@ select.sel { width: 100%; min-height: 42px; font: 400 15px/1.4 var(--sans); colo
       <div class="sec reveal" id="instSec" style="--i:3">
         <div class="shead"><div><h2 class="t-h2 serif" data-i="hInstT">At the machine</h2><p class="lede" data-i="hInstS">Numbers you use every shift. Tap one to change the inputs.</p></div></div>
         <div class="itiles" id="iTiles">
-          <button class="itile dark" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><g class="ring"><circle cx="32" cy="32" r="26" fill="none" stroke="#E8896A" stroke-width="2" stroke-dasharray="6 9" stroke-linecap="round"/></g><circle cx="32" cy="32" r="4" fill="#E8896A"/></svg><span class="it-e" data-i="tCut">Cutting speed</span><span class="it-n">1273<small>rpm</small></span><span class="it-s" data-i="tCutS">&#216;40 &middot; mild steel &middot; carbide, 160 m/min</span></button>
+          <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><g class="ring"><circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 9" stroke-linecap="round"/></g><circle cx="32" cy="32" r="4" fill="currentColor"/></svg><span class="it-e" data-i="tCut">Cutting speed</span><span class="it-n">1273<small>rpm</small></span><span class="it-s" data-i="tCutS">&#216;40 &middot; mild steel &middot; carbide, 160 m/min</span></button>
           <button class="itile" type="button" data-go="tools"><svg class="deco th" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 20l36-6M14 30l36-6M14 40l36-6M14 50l36-6"/></g></svg><span class="it-e" data-i="tTap">Tap drill</span><span class="it-n">5.0<small>mm</small></span><span class="it-s" data-i="tTapS">M6 &times; 1.0 coarse thread</span></button>
-          <button class="itile acc" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 40c8-14 12 14 20 0s12 14 20 0 10 8 16 0" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/></svg><span class="it-e" data-i="tRa">Surface finish</span><span class="it-n">1.6<small>&micro;m Ra</small></span><span class="it-s" data-i="tRaS">feed 0.2 &middot; nose radius 0.8</span></button>
-          <button class="itile dark" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="#E8896A" stroke-width="2"/><circle cx="32" cy="32" r="14" fill="none" stroke="#E8896A" stroke-opacity=".5" stroke-width="2"/></svg><span class="it-e" data-i="tCost">Job cost</span><span class="it-n">&#8377;<small>/ piece</small></span><span class="it-s" data-i="tCostS">Material, machine hour, tool and overhead</span></button>
+          <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 40c8-14 12 14 20 0s12 14 20 0 10 8 16 0" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/></svg><span class="it-e" data-i="tRa">Surface finish</span><span class="it-n">1.6<small>&micro;m Ra</small></span><span class="it-s" data-i="tRaS">feed 0.2 &middot; nose radius 0.8</span></button>
+          <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="14" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2"/></svg><span class="it-e" data-i="tCost">Job cost</span><span class="it-n">&#8377;<small>/ piece</small></span><span class="it-s" data-i="tCostS">Material, machine hour, tool and overhead</span></button>
         </div>
       </div>
 
@@ -919,7 +938,7 @@ select.sel { width: 100%; min-height: 42px; font: 400 15px/1.4 var(--sans); colo
           <div class="viz">
             <div class="top"><span class="lbl" data-i="rpmLbl">Spindle speed</span><span class="delta" id="tDelta" hidden><i data-lucide="arrow-up-right"></i><span id="tDeltaT">0%</span></span></div>
             <div class="ticker"><span class="digits" id="tTick"></span><span class="unit">rpm</span></div>
-            <svg class="spark" id="tSpark" viewBox="0 0 300 88" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D97757" stop-opacity=".22"/><stop offset="1" stop-color="#D97757" stop-opacity="0"/></linearGradient></defs></svg>
+            <svg class="spark" id="tSpark" viewBox="0 0 300 88" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs></svg>
             <div class="aux" id="tAux"></div>
           </div>
         </div>
@@ -1740,8 +1759,44 @@ select.sel { width: 100%; min-height: 42px; font: 400 15px/1.4 var(--sans); colo
   paintUI(); $('s-home').classList.add('enter');
   var obStep = 0;
   document.querySelectorAll("#iTiles .itile").forEach(function (t) { t.addEventListener("click", function () { var n = document.querySelector(".tabs [data-tab=\"" + t.dataset.go + "\"]") || document.querySelector(".side .nav[data-tab=\"" + t.dataset.go + "\"]"); if (n) n.click(); }); });
-  var LINE_LATHE = '<svg class="lathe" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path class="fl" style="--d:.1s" d="M64 252C34 150 140 66 300 72C468 62 604 122 584 232C566 288 120 298 64 252Z"/><path class="ln d" pathLength="1" style="--d:.2" d="M36 266H604"/><rect class="ln d" pathLength="1" style="--d:.3" x="60" y="94" width="96" height="152" rx="14"/><rect class="ln d" pathLength="1" style="--d:.5" x="150" y="112" width="38" height="20" rx="3"/><rect class="ln d" pathLength="1" style="--d:.55" x="150" y="210" width="38" height="20" rx="3"/><circle class="ln d" pathLength="1" style="--d:.65" cx="88" cy="124" r="5"/><circle class="ln d" pathLength="1" style="--d:.7" cx="88" cy="218" r="5"/><path class="fl2" d="M188 135H420V143H540V199H420V207H188Z"/><path class="ln d" pathLength="1" style="--d:.8" d="M188 135H420V143H540"/><path class="ln d" pathLength="1" style="--d:.95" d="M188 207H420V199H540"/><path class="ln d" pathLength="1" style="--d:1.1" d="M540 143V199"/><path class="ln d" pathLength="1" style="--d:1.2;opacity:.35" d="M206 154H404M206 190H404"/><path class="ln axis" d="M188 171H566"/><path class="ln d" pathLength="1" style="--d:1.3" d="M570 143V199M562 143H578M562 199H578"/><text class="dim" x="580" y="176">&#216;40</text><g class="tool"><path class="ln d" pathLength="1" style="--d:1.35" fill="none" d="M428 130L456 122L506 54L470 38Z"/><circle class="ln d" pathLength="1" style="--d:1.6" cx="466" cy="84" r="5"/><path class="ac d ins" pathLength="1" style="--d:1.7" d="M408 139L426 130L432 116L414 121Z"/></g><path class="ln ac chip" pathLength="1" d="M410 134C392 120 386 94 404 86C420 80 432 96 420 108"/><g class="ln ac sp"><path d="M402 126l-12 -6"/><path d="M406 122l-6 -12" style="animation-delay:.15s"/><path d="M398 132l-14 -2" style="animation-delay:.3s"/></g><path class="ln ac rot" d="M560 118q18 -14 36 0M560 224q18 14 36 0"/></svg>';
-  ["obArt","hArt"].forEach(function (id) { var h = $(id); if (h) h.innerHTML = LINE_LATHE; });
+  /* Karkhana scene: a side view of a lathe turning a bar down. One clock drives every part, so nothing drifts. Pauses off screen. */
+  var LATHE = '<svg class="lathe" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect class="sh" x="16" y="272" width="448" height="20" rx="10"/><path class="sh" d="M28 272V92a14 14 0 0 1 14-14H98a14 14 0 0 1 14 14V272"/><g class="js-part"><rect class="nf" x="142" y="130" width="258" height="80"/><path class="ol" d="M142 130H400V210H142"/><rect class="nf js-sfill" x="142" y="118" width="258" height="104"/><path class="ol js-sline" d="M400 130V118H142V222H400V210"/></g><circle class="ol" cx="70" cy="170" r="16"/><circle class="tl" cx="70" cy="170" r="3.5"/><path class="sh" d="M112 94H178V118H142V222H178V246H112Z"/><g class="js-spin" transform="rotate(0 70 48)"><circle class="track" cx="70" cy="48" r="13"/><path class="spin" d="M83 48A13 13 0 1 1 70 35"/><path class="spin" d="M66 31L71 35L66 39"/></g><g class="js-tag" opacity="0"><rect class="tagbox" x="285" y="232" width="70" height="24" rx="12"/><text x="320" y="248.5" text-anchor="middle">&#216;30 mm</text></g><g class="js-tool" transform="translate(400 96)"><path class="chip js-chip" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0" d="M-4 -6C-26 -10-44 -30-36 -52C-29 -66-8 -60-14 -44"/><rect class="sh" x="30" y="-88" width="40" height="42" rx="8"/><circle class="ol" cx="50" cy="-72" r="5"/><path class="tl" d="M0 0L-10 -10L38 -58L52 -44L24 -16Z"/></g></svg>';
+  function latheRun(host) {
+    var svg = host && host.firstElementChild; if (!svg) return;
+    var q = function (c) { return svg.querySelector(c); };
+    var tool = q('.js-tool'), chip = q('.js-chip'), fill = q('.js-sfill'), line = q('.js-sline'), part = q('.js-part'), tag = q('.js-tag'), spin = q('.js-spin');
+    var X0 = 400, TR = 160, L = 142, Y0 = 130, T = 9.2;
+    var cl = function (p) { return p < 0 ? 0 : p > 1 ? 1 : p; };
+    var out = function (p) { return 1 - Math.pow(1 - p, 3); };
+    var inout = function (p) { return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; };
+    function frame(t, abs) {
+      var tx = 0, ty = 0, edge = X0, on = 0;
+      if (t < .8) { ty = -34 * (1 - out(t / .8)); }
+      else if (t < 6.4) { tx = -TR * (t - .8) / 5.6; edge = X0 + tx; on = 1; }
+      else {
+        tx = -TR; edge = X0 - TR; ty = -34 * inout(cl((t - 6.4) / .6));
+        if (t >= 7.2) tx = -TR * (1 - inout(cl((t - 7.2) / 1.2)));
+        if (t >= 8.6) edge = X0;
+      }
+      var po = t < 8.2 ? 1 : t < 8.6 ? 1 - (t - 8.2) / .4 : t < 9.1 ? (t - 8.6) / .5 : 1;
+      var tg = t < 6.4 ? 0 : t < 6.9 ? (t - 6.4) / .5 : t < 8 ? 1 : t < 8.3 ? 1 - (t - 8) / .3 : 0;
+      var ph = on ? ((t - .8) % 1.5) / 1.5 : 0, co = 0, cd = 0;
+      if (on) { cd = ph < .5 ? ph / .5 : 1; co = ph < .85 ? 1 : 1 - (ph - .85) / .15; }
+      tool.setAttribute('transform', 'translate(' + (X0 + tx).toFixed(2) + ' ' + (Y0 + ty).toFixed(2) + ')');
+      fill.setAttribute('width', (edge - L).toFixed(2));
+      line.setAttribute('d', 'M' + edge.toFixed(2) + ' 130V118H142V222H' + edge.toFixed(2) + 'V210');
+      part.setAttribute('opacity', po.toFixed(3)); tag.setAttribute('opacity', tg.toFixed(3));
+      chip.setAttribute('stroke-dashoffset', (1 - cd).toFixed(3)); chip.setAttribute('opacity', co.toFixed(3));
+      spin.setAttribute('transform', 'rotate(' + ((abs * 200) % 360).toFixed(1) + ' 70 48)');
+    }
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { frame(3.2, 0); return; }
+    var running = false, vis = true, el = 0, last = 0, raf = 0;
+    function tick(now) { if (!running) return; var dt = Math.min(.1, (now - last) / 1000); last = now; el += dt; frame(el % T, el); raf = requestAnimationFrame(tick); }
+    function sync() { var want = vis && !document.hidden; if (want && !running) { running = true; last = performance.now(); raf = requestAnimationFrame(tick); } else if (!want && running) { running = false; cancelAnimationFrame(raf); } }
+    if ('IntersectionObserver' in window) { vis = false; new IntersectionObserver(function (es) { vis = es[es.length - 1].isIntersecting; sync(); }).observe(svg); }
+    document.addEventListener('visibilitychange', sync); sync();
+  }
+  ["obArt", "hArt"].forEach(function (id) { var h = $(id); if (h) { h.innerHTML = LATHE; latheRun(h); } });
   var obBuilt = false;
   function obBuild() { if (obBuilt) return; obBuilt = true;
     var host = $('obLangs'); host.textContent = ''; var NM = { hi: 'Hindi', en: 'English', hng: 'Hinglish', gu: 'Gujarati', mr: 'Marathi', ta: 'Tamil', te: 'Telugu', kn: 'Kannada', bn: 'Bengali', pa: 'Punjabi' };
