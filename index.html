@@ -818,6 +818,23 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
 .itile .deco { display: none; }
 .os-brand { order: 0; } .os-art { order: 1; } .os-quote { order: 2; }
 @media (min-width: 900px) { .hstage { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
+
+/* v18: no scene; page headers carry a fanned spread of related icons on the right */
+.pcl { position: absolute; right: 0; top: 30px; display: flex; pointer-events: none; }
+.pcl span { width: 44px; height: 44px; margin-left: -13px; display: grid; place-items: center; border-radius: 14px; background: var(--card); border: 1px solid var(--hair-2); color: var(--ink); box-shadow: var(--shadow-xs); transform: rotate(var(--r, 0deg)) translateY(var(--y, 0px)); animation: pclIn .7s var(--ease-out) both; }
+.pcl span:nth-child(1) { --r: -10deg; --y: 7px; animation-delay: .05s; } .pcl span:nth-child(3) { --r: 10deg; --y: 7px; animation-delay: .17s; }
+.pcl span.mid { --y: -3px; z-index: 2; background: var(--accent); color: var(--accent-ink); border-color: var(--accent); animation-delay: .11s; }
+.pcl .lucide { width: 20px; height: 20px; stroke-width: 1.75; }
+@keyframes pclIn { from { opacity: 0; transform: translateY(16px) rotate(0deg); } }
+.hero.pstage .t-hero { padding-right: 132px; }
+@media (min-width: 900px) { .pcl { top: 74px; } .pcl span { width: 58px; height: 58px; margin-left: -16px; border-radius: 17px; } .pcl .lucide { width: 25px; height: 25px; } .hero.pstage .t-hero { padding-right: 190px; } }
+@media (prefers-reduced-motion: reduce) { .pcl span { animation: none !important; } }
+/* onboarding + home: plain type, no drawing */
+.os-art { display: none; }
+.onb-stage { height: auto; gap: 16px; padding-bottom: 24px; }
+.os-quote { min-height: 0; font-size: clamp(22px, 6vw, 26px); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; }
+@media (min-width: 900px) { .onb-stage { height: auto; } .os-quote { margin-top: auto; font-size: clamp(32px, 3.2vw, 46px); } .hstage { display: block; margin-top: 18px; } .hstage .hcopy { max-width: 720px; } }
+.hstage { margin-top: 10px; }
 </style>
 
 <script>window.va=window.va||function(){(window.va.q=window.va.q||[]).push(arguments)}</script><script defer src="/_vercel/insights/script.js"></script>
@@ -848,8 +865,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
     <!-- HOME -->
     <section id="s-home" class="screen">
       <div class="hero hstage">
-        <div class="hart art" id="hArt" aria-hidden="true"></div>
-        <div class="hcopy">
+                <div class="hcopy">
         <div class="eyebrow reveal" style="--i:0" id="hello"></div>
         <h1 class="t-hero reveal" style="--i:1" id="h1"></h1>
         <div class="composer reveal" style="--i:2">
@@ -883,11 +899,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
         <div class="panel"><div class="rows" id="symGrid"></div></div>
       </div>
 
-      <div class="sec reveal" style="--i:5">
-        <div class="shead"><div><h2 class="t-h2 serif" data-i="recentTitle">Recent on this device</h2><p class="lede" data-i="recentLede">Guides you opened and fixes you logged. Only this phone sees this.</p></div></div>
-        <div class="panel list" id="homeRecent"></div>
-      </div>
-    </section>
+          </section>
 
     <!-- GUIDE -->
     <section id="s-guide" class="screen" hidden><div class="gwrap">
@@ -914,7 +926,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
 
     <!-- GUIDES -->
     <section id="s-guides" class="screen" hidden>
-      <div class="hero pstage" style="padding-bottom:0"><svg class="pm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" style="--d:.1" d="M14 30c14-6 32-6 46 4v62c-14-10-32-10-46-4z"/><path pathLength="1" style="--d:.25" d="M106 30c-14-6-32-6-46 4v62c14-10 32-10 46-4z"/><path pathLength="1" style="--d:.5" d="M26 46c8-2 16-2 24 2M26 60c8-2 16-2 24 2M26 74c8-2 16-2 24 2M70 48c8-4 16-4 24-2M70 62c8-4 16-4 24-2"/></g></svg><div class="eyebrow" data-i="guidesEye">Know-how</div><h1 class="t-hero" data-i="guidesTitle">Guides</h1><p class="lede" data-i="libLede">Built from standard shop-floor practice, added to by factories. Search, or add what you know.</p><p class="small muted num" id="libCount" style="margin-top:6px"></p></div>
+      <div class="hero pstage" style="padding-bottom:0"><div class="pcl" aria-hidden="true"><span><i data-lucide="book-open"></i></span><span class="mid"><i data-lucide="search"></i></span><span><i data-lucide="pin"></i></span></div><div class="eyebrow" data-i="guidesEye">Know-how</div><h1 class="t-hero" data-i="guidesTitle">Guides</h1><p class="lede" data-i="libLede">Built from standard shop-floor practice, added to by factories. Search, or add what you know.</p><p class="small muted num" id="libCount" style="margin-top:6px"></p></div>
       <div class="sec" style="padding-top:24px">
         <div class="note langnote" id="langNote" hidden style="margin-bottom:14px"></div>
         <div class="between"><div class="searchbar"><i data-lucide="search"></i><input id="libQ" type="text" aria-label="Search guides"><span class="kbd">/</span></div><button class="ghost" id="addBtn" type="button"><i data-lucide="plus"></i><span data-i="add">Add</span></button></div>
@@ -926,7 +938,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
 
     <!-- TOOLS -->
     <section id="s-tools" class="screen" hidden>
-      <div class="hero pstage" style="padding-bottom:0"><svg class="pm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle pathLength="1" style="--d:.1" cx="60" cy="60" r="46"/><circle pathLength="1" style="--d:.3" cx="60" cy="60" r="34" stroke-dasharray="3 7"/><path pathLength="1" style="--d:.5" d="M60 60L86 34"/><circle cx="60" cy="60" r="5" fill="currentColor"/></g></svg><div class="eyebrow" data-i="toolEye">Instrument</div><h1 class="t-hero" data-i="toolsTitle">Tools</h1><p class="lede" data-i="toolsEye">Numbers you need at the machine.</p></div>
+      <div class="hero pstage" style="padding-bottom:0"><div class="pcl" aria-hidden="true"><span><i data-lucide="ruler"></i></span><span class="mid"><i data-lucide="calculator"></i></span><span><i data-lucide="gauge"></i></span></div><div class="eyebrow" data-i="toolEye">Instrument</div><h1 class="t-hero" data-i="toolsTitle">Tools</h1><p class="lede" data-i="toolsEye">Numbers you need at the machine.</p></div>
       <div class="sec" style="padding-top:28px">
         <div class="shead"><div><h2 class="t-h2 serif" data-i="toolA">Cutting speed, RPM and feed</h2><p class="lede" data-i="toolANote">Starting values. Drop speed 20 to 30% on a worn machine or an interrupted cut.</p></div></div>
         <div class="panel inst">
@@ -973,13 +985,13 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
 
     <!-- SCHEMES -->
     <section id="s-schemes" class="screen" hidden>
-      <div class="hero pstage" style="padding-bottom:0"><svg class="pm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" style="--d:.1" d="M14 46L60 20l46 26z"/><path pathLength="1" style="--d:.3" d="M14 100h92M22 88h76"/><path pathLength="1" style="--d:.5" d="M32 52v32M50 52v32M70 52v32M88 52v32"/></g></svg><div class="eyebrow" id="schEye"></div><h1 class="t-hero" data-i="schTitle">Government support</h1><p class="lede" data-i="schLede">Matched to your Udyam size and sector. Rules change; confirm on the official site before applying.</p></div>
+      <div class="hero pstage" style="padding-bottom:0"><div class="pcl" aria-hidden="true"><span><i data-lucide="banknote"></i></span><span class="mid"><i data-lucide="landmark"></i></span><span><i data-lucide="receipt"></i></span></div><div class="eyebrow" id="schEye"></div><h1 class="t-hero" data-i="schTitle">Government support</h1><p class="lede" data-i="schLede">Matched to your Udyam size and sector. Rules change; confirm on the official site before applying.</p></div>
       <div class="sec" style="padding-top:28px"><div class="panel list" id="schList"></div></div>
     </section>
 
     <!-- MACHINES -->
     <section id="s-machines" class="screen" hidden>
-      <div class="hero pstage" style="padding-bottom:0"><svg class="pm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="1" style="--d:.1" cx="60" cy="60" r="20"/><circle pathLength="1" style="--d:.3" cx="60" cy="60" r="7"/><path pathLength="1" style="--d:.5" d="M60 24v10M60 86v10M24 60h10M86 60h10M35 35l7 7M78 78l7 7M85 35l-7 7M42 78l-7 7"/></g></svg><div class="eyebrow" data-i="machEye2">Your floor</div><h1 class="t-hero" data-i="nMach">My machines</h1><p class="lede" data-i="machEye">Private to this factory. Stays on this device.</p></div>
+      <div class="hero pstage" style="padding-bottom:0"><div class="pcl" aria-hidden="true"><span><i data-lucide="cog"></i></span><span class="mid"><i data-lucide="factory"></i></span><span><i data-lucide="wrench"></i></span></div><div class="eyebrow" data-i="machEye2">Your floor</div><h1 class="t-hero" data-i="nMach">My machines</h1><p class="lede" data-i="machEye">Private to this factory. Stays on this device.</p></div>
       <div class="sec" style="padding-top:28px">
         <div class="panel list" id="machList"></div>
         <div class="panel acc" id="addMachAcc"><button class="acc-h addrow" type="button" aria-expanded="false" id="addMachToggle"><i data-lucide="plus"></i><span class="t" data-i="addMach">Add a machine</span><i data-lucide="chevron-down" class="chev"></i></button><div class="acc-b"><div class="acc-in"><div class="grid2"><div class="field"><label for="mName" data-i="mName">Name</label><input id="mName" type="text"></div><div class="field"><label for="mType" data-i="mType">Type</label><select id="mType"></select></div></div><div class="between" style="margin-top:12px"><span></span><button class="cta" id="mAdd" type="button"><span data-i="add">Add</span><i data-lucide="arrow-up"></i></button></div></div></div></div>
@@ -998,8 +1010,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
 
   <div class="onb" id="onb" data-step="0" hidden>
     <div class="onb-stage" aria-hidden="true">
-      <div class="os-art art" id="obArt"></div>
-      <div class="os-brand"><svg class="mark" viewBox="0 0 512 512" aria-hidden="true"><circle cx="256" cy="256" r="176" fill="none" stroke="currentColor" stroke-width="36"/><rect x="225" y="62" width="62" height="124" rx="16" fill="currentColor"/><rect x="225" y="62" width="62" height="124" rx="16" fill="currentColor" transform="rotate(120 256 256)"/><rect x="225" y="62" width="62" height="124" rx="16" fill="currentColor" transform="rotate(240 256 256)"/><circle cx="256" cy="256" r="34" fill="currentColor"/></svg><b>Karkhana</b><i>&#2325;&#2366;&#2352;&#2326;&#2364;&#2366;&#2344;&#2366;</i></div>
+            <div class="os-brand"><svg class="mark" viewBox="0 0 512 512" aria-hidden="true"><circle cx="256" cy="256" r="176" fill="none" stroke="currentColor" stroke-width="36"/><rect x="225" y="62" width="62" height="124" rx="16" fill="currentColor"/><rect x="225" y="62" width="62" height="124" rx="16" fill="currentColor" transform="rotate(120 256 256)"/><rect x="225" y="62" width="62" height="124" rx="16" fill="currentColor" transform="rotate(240 256 256)"/><circle cx="256" cy="256" r="34" fill="currentColor"/></svg><b>Karkhana</b><i>&#2325;&#2366;&#2352;&#2326;&#2364;&#2366;&#2344;&#2366;</i></div>
       <div class="os-quote serif sw" id="obQuote"><span id="obQuoteT"></span></div>
     </div>
     <div class="onb-panel">
@@ -1396,7 +1407,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
     b.appendChild(act); holdable(b, function () { var on = togglePin(e); act.setAttribute('aria-pressed', String(on)); }); return b; }
   function paintPins() { var sec = $('pinSec'), host = $('pinList'); host.textContent = ''; var items = pins.map(function (k) { return allKb().filter(function (e) { return keyOf(e) === k; })[0]; }).filter(Boolean);
     sec.hidden = !items.length; items.forEach(function (e) { host.appendChild(guideRow(e)); }); icons(host); if (!items.length) return; sec.classList.add('in'); }
-  function paintRecents() { var h = $('homeRecent'); h.textContent = '';
+  function paintRecents() { var h = $('homeRecent'); if (!h) return; h.textContent = '';
     if (!recents.length) { var d = el('div', 'empty', '<p></p>'); d.firstChild.textContent = ui('noRecent'); h.appendChild(d); return; }
     recents.forEach(function (r) { var b = el('button', 'li rec', '<i data-lucide="' + (r.type === 'fix' ? 'factory' : r.type === 'ai' ? 'sparkles' : 'book-open') + '" class="ico"></i><span class="t"></span><span class="when"></span>'); b.type = 'button'; b.querySelector('.t').textContent = r.title; b.querySelector('.when').textContent = ago(r.when);
       b.addEventListener('click', function () { if (r.type === 'fix') show('machines'); else if (r.type === 'ai') { openChat(null, r.title); } else { var e = allKb().filter(function (x) { return (x.id + ':' + x.lang) === r.k; })[0]; if (e) openGuide(e); } }); h.appendChild(b); }); }
@@ -1759,44 +1770,6 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
   paintUI(); $('s-home').classList.add('enter');
   var obStep = 0;
   document.querySelectorAll("#iTiles .itile").forEach(function (t) { t.addEventListener("click", function () { var n = document.querySelector(".tabs [data-tab=\"" + t.dataset.go + "\"]") || document.querySelector(".side .nav[data-tab=\"" + t.dataset.go + "\"]"); if (n) n.click(); }); });
-  /* Karkhana scene: a side view of a lathe turning a bar down. One clock drives every part, so nothing drifts. Pauses off screen. */
-  var LATHE = '<svg class="lathe" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect class="sh" x="16" y="272" width="448" height="20" rx="10"/><path class="sh" d="M28 272V92a14 14 0 0 1 14-14H98a14 14 0 0 1 14 14V272"/><g class="js-part"><rect class="nf" x="142" y="130" width="258" height="80"/><path class="ol" d="M142 130H400V210H142"/><rect class="nf js-sfill" x="142" y="118" width="258" height="104"/><path class="ol js-sline" d="M400 130V118H142V222H400V210"/></g><circle class="ol" cx="70" cy="170" r="16"/><circle class="tl" cx="70" cy="170" r="3.5"/><path class="sh" d="M112 94H178V118H142V222H178V246H112Z"/><g class="js-spin" transform="rotate(0 70 48)"><circle class="track" cx="70" cy="48" r="13"/><path class="spin" d="M83 48A13 13 0 1 1 70 35"/><path class="spin" d="M66 31L71 35L66 39"/></g><g class="js-tag" opacity="0"><rect class="tagbox" x="285" y="232" width="70" height="24" rx="12"/><text x="320" y="248.5" text-anchor="middle">&#216;30 mm</text></g><g class="js-tool" transform="translate(400 96)"><path class="chip js-chip" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0" d="M-4 -6C-26 -10-44 -30-36 -52C-29 -66-8 -60-14 -44"/><rect class="sh" x="30" y="-88" width="40" height="42" rx="8"/><circle class="ol" cx="50" cy="-72" r="5"/><path class="tl" d="M0 0L-10 -10L38 -58L52 -44L24 -16Z"/></g></svg>';
-  function latheRun(host) {
-    var svg = host && host.firstElementChild; if (!svg) return;
-    var q = function (c) { return svg.querySelector(c); };
-    var tool = q('.js-tool'), chip = q('.js-chip'), fill = q('.js-sfill'), line = q('.js-sline'), part = q('.js-part'), tag = q('.js-tag'), spin = q('.js-spin');
-    var X0 = 400, TR = 160, L = 142, Y0 = 130, T = 9.2;
-    var cl = function (p) { return p < 0 ? 0 : p > 1 ? 1 : p; };
-    var out = function (p) { return 1 - Math.pow(1 - p, 3); };
-    var inout = function (p) { return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; };
-    function frame(t, abs) {
-      var tx = 0, ty = 0, edge = X0, on = 0;
-      if (t < .8) { ty = -34 * (1 - out(t / .8)); }
-      else if (t < 6.4) { tx = -TR * (t - .8) / 5.6; edge = X0 + tx; on = 1; }
-      else {
-        tx = -TR; edge = X0 - TR; ty = -34 * inout(cl((t - 6.4) / .6));
-        if (t >= 7.2) tx = -TR * (1 - inout(cl((t - 7.2) / 1.2)));
-        if (t >= 8.6) edge = X0;
-      }
-      var po = t < 8.2 ? 1 : t < 8.6 ? 1 - (t - 8.2) / .4 : t < 9.1 ? (t - 8.6) / .5 : 1;
-      var tg = t < 6.4 ? 0 : t < 6.9 ? (t - 6.4) / .5 : t < 8 ? 1 : t < 8.3 ? 1 - (t - 8) / .3 : 0;
-      var ph = on ? ((t - .8) % 1.5) / 1.5 : 0, co = 0, cd = 0;
-      if (on) { cd = ph < .5 ? ph / .5 : 1; co = ph < .85 ? 1 : 1 - (ph - .85) / .15; }
-      tool.setAttribute('transform', 'translate(' + (X0 + tx).toFixed(2) + ' ' + (Y0 + ty).toFixed(2) + ')');
-      fill.setAttribute('width', (edge - L).toFixed(2));
-      line.setAttribute('d', 'M' + edge.toFixed(2) + ' 130V118H142V222H' + edge.toFixed(2) + 'V210');
-      part.setAttribute('opacity', po.toFixed(3)); tag.setAttribute('opacity', tg.toFixed(3));
-      chip.setAttribute('stroke-dashoffset', (1 - cd).toFixed(3)); chip.setAttribute('opacity', co.toFixed(3));
-      spin.setAttribute('transform', 'rotate(' + ((abs * 200) % 360).toFixed(1) + ' 70 48)');
-    }
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { frame(3.2, 0); return; }
-    var running = false, vis = true, el = 0, last = 0, raf = 0;
-    function tick(now) { if (!running) return; var dt = Math.min(.1, (now - last) / 1000); last = now; el += dt; frame(el % T, el); raf = requestAnimationFrame(tick); }
-    function sync() { var want = vis && !document.hidden; if (want && !running) { running = true; last = performance.now(); raf = requestAnimationFrame(tick); } else if (!want && running) { running = false; cancelAnimationFrame(raf); } }
-    if ('IntersectionObserver' in window) { vis = false; new IntersectionObserver(function (es) { vis = es[es.length - 1].isIntersecting; sync(); }).observe(svg); }
-    document.addEventListener('visibilitychange', sync); sync();
-  }
-  ["obArt", "hArt"].forEach(function (id) { var h = $(id); if (h) { h.innerHTML = LATHE; latheRun(h); } });
   var obBuilt = false;
   function obBuild() { if (obBuilt) return; obBuilt = true;
     var host = $('obLangs'); host.textContent = ''; var NM = { hi: 'Hindi', en: 'English', hng: 'Hinglish', gu: 'Gujarati', mr: 'Marathi', ta: 'Tamil', te: 'Telugu', kn: 'Kannada', bn: 'Bengali', pa: 'Punjabi' };
