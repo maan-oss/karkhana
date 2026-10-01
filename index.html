@@ -835,6 +835,25 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
 .os-quote { min-height: 0; font-size: clamp(22px, 6vw, 26px); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; }
 @media (min-width: 900px) { .onb-stage { height: auto; } .os-quote { margin-top: auto; font-size: clamp(32px, 3.2vw, 46px); } .hstage { display: block; margin-top: 18px; } .hstage .hcopy { max-width: 720px; } }
 .hstage { margin-top: 10px; }
+
+/* v19: wider pages, calm numbers (no roll or blur), nothing clipped, balanced instrument panels */
+:root { --rs: system-ui, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif; }
+.wrap { max-width: 1000px; }
+.rs { font-family: var(--rs); }
+.ticker { align-items: baseline; gap: 8px; }
+.ticker .digits { display: inline; height: auto; overflow: visible; white-space: nowrap; font: 600 clamp(46px, 6vw, 64px)/1.05 var(--sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums lining-nums; }
+.ticker .unit { font: 500 17px/1 var(--sans); color: var(--ink-3); }
+.ticker .unit.pre { font: 500 34px/1 var(--rs); color: var(--ink-2); margin-right: 0; }
+.itile .it-n .rs { font-size: .6em; font-weight: 500; color: var(--ink-2); margin-right: 2px; }
+.inst .ctl { padding: 24px; gap: 16px; }
+.inst .grid2 { grid-template-columns: 1fr 1fr; }
+.inst .viz { padding: 24px; gap: 16px; }
+.viz .top { min-height: 26px; }
+.viz .aux { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--hair); gap: 12px 32px; }
+.aux b { font-size: 17px; } .aux span { font-size: 12.5px; }
+.formula { white-space: normal; overflow-wrap: anywhere; padding: 14px 24px; }
+.hstage { padding: 20px 0 4px; margin-top: 0; }
+@media (min-width: 900px) { .hstage { padding: 52px 0 8px; margin-top: 0; } .inst .ctl, .inst .viz { padding: 28px; } }
 </style>
 
 <script>window.va=window.va||function(){(window.va.q=window.va.q||[]).push(arguments)}</script><script defer src="/_vercel/insights/script.js"></script>
@@ -885,7 +904,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
           <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><g class="ring"><circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 9" stroke-linecap="round"/></g><circle cx="32" cy="32" r="4" fill="currentColor"/></svg><span class="it-e" data-i="tCut">Cutting speed</span><span class="it-n">1273<small>rpm</small></span><span class="it-s" data-i="tCutS">&#216;40 &middot; mild steel &middot; carbide, 160 m/min</span></button>
           <button class="itile" type="button" data-go="tools"><svg class="deco th" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 20l36-6M14 30l36-6M14 40l36-6M14 50l36-6"/></g></svg><span class="it-e" data-i="tTap">Tap drill</span><span class="it-n">5.0<small>mm</small></span><span class="it-s" data-i="tTapS">M6 &times; 1.0 coarse thread</span></button>
           <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 40c8-14 12 14 20 0s12 14 20 0 10 8 16 0" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/></svg><span class="it-e" data-i="tRa">Surface finish</span><span class="it-n">1.6<small>&micro;m Ra</small></span><span class="it-s" data-i="tRaS">feed 0.2 &middot; nose radius 0.8</span></button>
-          <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="14" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2"/></svg><span class="it-e" data-i="tCost">Job cost</span><span class="it-n">&#8377;<small>/ piece</small></span><span class="it-s" data-i="tCostS">Material, machine hour, tool and overhead</span></button>
+          <button class="itile" type="button" data-go="tools"><svg class="deco" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="14" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2"/></svg><span class="it-e" data-i="tCost">Job cost</span><span class="it-n"><span class="rs">&#8377;</span>107<small>/ piece</small></span><span class="it-s">&#8377;450/hr &middot; 6 min &middot; batch of 50 &middot; 20% margin</span></button>
         </div>
       </div>
 
@@ -1284,7 +1303,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
   SEED = SEED.concat(SEED_EN, SEED_HI);
 
   var UI_EXTRA = {
-    en: { hello: 'Namaste', micHint: 'Tap the mic on your keyboard to speak', fixSub: 'Pick what you see. Causes come most likely first, with the number to change.', quickTool: 'Cutting speed to RPM', toolLede: 'Starting values for a first cut. Drop 20 to 30% on a worn machine.', moneyTitle: 'Support you qualify for', moneyLede: 'Matched to your Udyam size and sector.', recentTitle: 'Newest guides', recentLede: 'Reviewed by engineers, added by factories.', machLede: 'Log what fixed what. Private to this device.', libLede: 'Built from standard shop-floor practice, added to by factories. Search, or add what you know.', toolEye: 'Instruments', toolsEye: 'Numbers you need at the machine.', toolA: 'Cutting speed, RPM and feed', refTitle: 'Tap drills and fits', refLede: 'Metric coarse at about 75% thread; hole-basis fits you will actually meet.', machEye2: 'Your floor', rpmLbl: 'Spindle speed', vsHss: 'vs HSS', feedLbl: 'feed mm/rev', vfLbl: 'table feed mm/min', vcLbl: 'Vc m/min', rtLbl: 'Rt µm', fzLbl: 'fz mm/tooth', aiTag: 'Advisor', stillLede: 'Say what you see now. The advisor knows this guide, your machines and what you ticked.', addMachCta: 'Add a machine', pChange: 'Settings' },
+    en: { hello: 'Namaste', micHint: 'Tap the mic on your keyboard to speak', fixSub: 'Pick what you see. Causes come most likely first, with the number to change.', quickTool: 'Cutting speed to RPM', toolLede: 'Starting values for a first cut. Drop 20 to 30% on a worn machine.', moneyTitle: 'Support you qualify for', moneyLede: 'Matched to your Udyam size and sector.', recentTitle: 'Newest guides', recentLede: 'Reviewed by engineers, added by factories.', machLede: 'Log what fixed what. Private to this device.', libLede: 'Built from standard shop-floor practice, added to by factories. Search, or add what you know.', toolEye: 'Instruments', toolsEye: 'Numbers you need at the machine.', toolA: 'Cutting speed, RPM and feed', refTitle: 'Tap drills and fits', refLede: 'Metric coarse at about 75% thread; hole-basis fits you will actually meet.', machEye2: 'Your floor', rpmLbl: 'Spindle speed', vsHss: 'vs HSS', feedLbl: 'feed mm/rev', vfLbl: 'table feed mm/min', vcLbl: 'Vc m/min', rtLbl: 'Rt µm', gradeLbl: 'ISO grade', fzLbl: 'fz mm/tooth', aiTag: 'Advisor', stillLede: 'Say what you see now. The advisor knows this guide, your machines and what you ticked.', addMachCta: 'Add a machine', pChange: 'Settings' },
     hi: { hello: 'नमस्ते', micHint: 'बोलने के लिए कीबोर्ड का माइक दबाओ', fixSub: 'जो दिख रहा है वो चुनो। कारण सबसे संभावित पहले, बदलने वाले अंक के साथ।', quickTool: 'Cutting speed से RPM', toolLede: 'पहले cut के शुरुआती मान। पुरानी मशीन पर 20-30% कम।', moneyTitle: 'जो सहायता आपको मिल सकती है', moneyLede: 'आपके Udyam आकार और सेक्टर से मिलाई गई।', recentTitle: 'नई गाइड', recentLede: 'इंजीनियरों ने जाँचा, कारखानों ने जोड़ा।', machLede: 'क्या करने से क्या ठीक हुआ, log करो। सिर्फ इस डिवाइस पर।', libLede: 'मानक शॉप-फ़्लोर practice से बनी, कारखानों ने जोड़ी। खोजो, या जो जानते हो वो जोड़ो।', toolEye: 'उपकरण', toolsEye: 'मशीन पर चाहिए वाले अंक।', toolA: 'Cutting speed, RPM और feed', refTitle: 'Tap drill और fits', refLede: 'Metric coarse लगभग 75% thread पर; hole-basis fits जो असल में मिलते हैं।', machEye2: 'आपका फ़्लोर', rpmLbl: 'Spindle speed', vsHss: 'HSS से', feedLbl: 'feed mm/rev', vfLbl: 'table feed mm/min', vcLbl: 'Vc m/min', rtLbl: 'Rt µm', fzLbl: 'fz mm/tooth', aiTag: 'सलाहकार', stillLede: 'अब जो दिख रहा है वो बताओ। सलाहकार को यह गाइड, आपकी मशीनें और टिक किया हुआ पता है।', addMachCta: 'मशीन जोड़ो', pChange: 'सेटिंग्स' },
     hng: { hello: 'Namaste', micHint: 'Bolne ke liye keyboard ka mic dabao', fixSub: 'Jo dikh raha hai woh chuno. Kaaran sabse sambhavit pehle, badalne wale number ke saath.', quickTool: 'Cutting speed se RPM', toolLede: 'Pehle cut ke shuruaati values. Purani machine par 20-30% kam.', moneyTitle: 'Jo sahayata aapko mil sakti hai', moneyLede: 'Aapke Udyam size aur sector se milayi gayi.', recentTitle: 'Nayi guides', recentLede: 'Engineers ne jaancha, karkhanon ne joda.', machLede: 'Kya karne se kya theek hua, log karo. Sirf is device par.', libLede: 'Standard shop-floor practice se bani, karkhanon ne jodi. Khojo, ya jo jaante ho woh jodo.', toolEye: 'Instrument', toolsEye: 'Machine par chahiye wale numbers.', toolA: 'Cutting speed, RPM aur feed', refTitle: 'Tap drills aur fits', refLede: 'Metric coarse lagbhag 75% thread par; hole-basis fits jo asal mein milte hain.', machEye2: 'Aapka floor', rpmLbl: 'Spindle speed', vsHss: 'HSS se', feedLbl: 'feed mm/rev', vfLbl: 'table feed mm/min', vcLbl: 'Vc m/min', rtLbl: 'Rt µm', fzLbl: 'fz mm/tooth', aiTag: 'Advisor', stillLede: 'Ab jo dikh raha hai woh batao. Advisor ko yeh guide, aapki machines aur tick kiya hua pata hai.', addMachCta: 'Machine jodo', pChange: 'Settings' }
   };
@@ -1349,11 +1368,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
 
   /* ================= number ticker ================= */
-  function ticker(host, text) {
-    var chars = String(text).split(''); var cur = host.querySelectorAll('.dg, .sep');
-    if (cur.length !== chars.length) { host.textContent = ''; chars.forEach(function (ch) { if (/\d/.test(ch)) { var dg = el('span', 'dg'); var col = el('span', 'col'); for (var i = 0; i < 10; i++) { var s = el('span'); s.textContent = i; col.appendChild(s); } dg.appendChild(col); host.appendChild(dg); } else { var sp = el('span', 'sep'); sp.textContent = ch; host.appendChild(sp); } }); cur = host.querySelectorAll('.dg, .sep'); }
-    chars.forEach(function (ch, i) { var n = cur[i]; if (n.classList.contains('dg')) { var col = n.firstChild; col.style.transitionDelay = (i * 40) + 'ms'; n.classList.add('blur'); col.style.transform = 'translateY(' + (-parseInt(ch, 10) * 48) + 'px)'; setTimeout(function () { n.classList.remove('blur'); }, 500 + i * 40); } else n.textContent = ch; });
-  }
+  function ticker(host, text) { host.textContent = String(text); }
 
   /* ================= sparkline ================= */
   function sparkline(svg, matId, tool, dCur, played) {
@@ -1722,7 +1737,7 @@ svg.lathe { animation: artIn .8s var(--ease-out) both; } @keyframes artIn { from
   function calcA() { if (!tSeg) return; var z = Math.max(1, parseInt($('tZ').value, 10) || 1); var d = parseFloat($('tD').value) || 1; var r = rpmCalc($('tMat').value, tSeg.get(), d, z); ticker($('tTick'), r.n);
     if (lastRpm != null && lastRpm !== r.n) { var pct = Math.round((r.n / lastRpm - 1) * 100); $('tDeltaT').textContent = (pct > 0 ? '+' : '') + pct + '%'; $('tDelta').hidden = false; $('tDelta').classList.toggle('down', pct < 0); $('tDelta').querySelector('i, svg').outerHTML = '<i data-lucide="' + (pct < 0 ? 'arrow-down-right' : 'arrow-up-right') + '"></i>'; icons(); } lastRpm = r.n;
     aux($('tAux'), [[r.vc, ui('vcLbl')], [r.f.toFixed(2), z > 1 ? ui('fzLbl') : ui('feedLbl')], [r.vf, ui('vfLbl')]]); sparkline($('tSpark'), $('tMat').value, tSeg.get(), d, sparkPlayed); sparkPlayed = true; }
-  function calcB() { var f = parseFloat($('tF').value) || 0, r = parseFloat($('tR').value) || 0.1; var ra = f * f / (32 * r) * 1000, rt = f * f / (8 * r) * 1000; ticker($('fTick'), ra.toFixed(2)); aux($('fAux'), [[rt.toFixed(1), ui('rtLbl')]]); }
+  function calcB() { var f = parseFloat($('tF').value) || 0, r = parseFloat($('tR').value) || 0.1; var ra = f * f / (32 * r) * 1000, rt = f * f / (8 * r) * 1000; ticker($('fTick'), ra.toFixed(2)); var NG = [[0.2,'N4'],[0.4,'N5'],[0.8,'N6'],[1.6,'N7'],[3.2,'N8'],[6.3,'N9'],[12.5,'N10'],[25,'N11'],[50,'N12']], gr = '–'; if (ra > 0) { gr = 'N12+'; for (var gi = 0; gi < NG.length; gi++) { if (ra <= NG[gi][0] * 1.001) { gr = NG[gi][1]; break; } } } aux($('fAux'), [[rt.toFixed(1), ui('rtLbl')], [gr, ui('gradeLbl')]]); }
   var TOLS = [['0.5 – 3', 0.05, 0.1, 0.2], ['3 – 6', 0.05, 0.1, 0.3], ['6 – 30', 0.1, 0.2, 0.5], ['30 – 120', 0.15, 0.3, 0.8], ['120 – 400', 0.2, 0.5, 1.2], ['400 – 1000', 0.3, 0.8, 2.0]];
   function inr(n) { return Math.round(n).toLocaleString('en-IN'); }
   function calcC() { var rate = +$('cRate').value || 0, cyc = +$('cCyc').value || 0, set = +$('cSet').value || 0, qty = Math.max(1, +$('cQty').value || 1), mat = +$('cMat').value || 0, mg = +$('cMg').value || 0;
